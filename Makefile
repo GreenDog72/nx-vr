@@ -20,8 +20,11 @@ include $(DEVKITPRO)/libnx/switch_rules
 # NO_ICON: if set to anything, do not use icon.
 # NO_NACP: if set to anything, no .nacp file is generated.
 # APP_TITLE is the name of the app stored in the .nacp file (Optional)
+APP_TITLE := VR POC
 # APP_AUTHOR is the author of the app stored in the .nacp file (Optional)
+APP_AUTHOR := Green;Dog
 # APP_VERSION is the version of the app stored in the .nacp file (Optional)
+APP_VERSION := 0.0.2
 # APP_TITLEID is the titleID of the app stored in the .nacp file (Optional)
 # ICON is the filename of the icon (.jpg), relative to the project folder.
 #   If not set, it attempts to use one of the following (in this order):
@@ -157,10 +160,6 @@ endif
 
 .PHONY: $(BUILD) clean all
 
-run: all
-	# put your own switch's ip address here
-	nxlink -a 192.168.1.131 $(OUTPUT).nro
-
 #---------------------------------------------------------------------------------
 all: $(BUILD)
 
@@ -177,6 +176,9 @@ else
 	@rm -fr $(BUILD) $(TARGET).nsp $(TARGET).nso $(TARGET).npdm $(TARGET).elf
 endif
 
+run: all
+	# put your own switch's ip address here
+	nxlink -a 192.168.1.131 $(OUTPUT).nro
 
 #---------------------------------------------------------------------------------
 else
